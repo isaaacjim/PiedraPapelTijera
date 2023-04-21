@@ -10,8 +10,9 @@ class GameController extends Controller
 {
     public function index()
     {
+    // Llamamos a todos los usuarios
         $users = User::all();
-
+    // Retornamos vista de usuarios
         return view('users', compact('users'));
     }
 
@@ -26,19 +27,19 @@ class GameController extends Controller
         $user = User::findOrFail($id_user);
             
     // Aqui decimos que si el usuario es rock los diferentes escenarios:
-        if($user_choice == 'rock') {
+        if($user_choice == 'Rock') {
              switch ($machine_choice) {
-                case 'rock':
+                case 'Rock':
                 $answer = 'Its a tie';
                   break;
 
-                 case 'paper':
+                 case 'Paper':
                 $answer = 'You lose';
                 $user->losser += 1;
                 
                   break;
 
-                 case 'scissors':
+                 case 'Scissors':
                  $answer = 'You win';
                  $user->winner += 1;
                  
@@ -49,19 +50,19 @@ class GameController extends Controller
 
         
 
-        } elseif($user_choice == 'paper') {
+        } elseif($user_choice == 'Paper') {
             switch ($machine_choice) {
-               case 'paper':
+               case 'Paper':
                $answer = 'Its a tie';
                  break;
 
-                case 'scissors':
+                case 'Scissors':
                $answer = 'You lose';
                $user->losser += 1;
                
                  break;
 
-                case 'rock':
+                case 'Rock':
                 $answer = 'You win';
                 $user->winner += 1;
                 
@@ -72,17 +73,17 @@ class GameController extends Controller
 
        } else {
         switch ($machine_choice) {
-           case 'scissors':
+           case 'Scissors':
            $answer = 'Its a tie';
              break;
 
-            case 'rock':
+            case 'Rock':
            $answer = 'You lose';
            $user->losser += 1;
            
              break;
 
-            case 'paper':
+            case 'Paper':
             $answer = 'You win';
             $user->winner += 1;
             
@@ -92,11 +93,14 @@ class GameController extends Controller
         $user->save();
 
        }
-    return view('result');
+    // El compact al retornar una vista, devuelve una variable a la vista que hayas seleccionado
+    // se utilizando cuando en la vista tienes que jugar con la variable, sino no
+    return view('result', compact('answers'));
     }
 
+
     public function game(Request $request) {
-        $options = ['rock', 'paper', 'scissors'];
+        $options = ['Rock', 'Paper', 'Scissors'];
         $machine_choice = array_rand($options);
         // Por la URL
         $user_choice = $request->choice;
