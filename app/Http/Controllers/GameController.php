@@ -26,7 +26,7 @@ class GameController extends Controller
         
     // Gracias al campo id obtengo todos los datos del usuario
         $user = User::findOrFail($id_user);
-        echo "hola3";
+        
     // Aqui decimos que si el usuario es rock los diferentes escenarios:
     
         if($user_choice == 'Rock') {
@@ -98,7 +98,8 @@ class GameController extends Controller
        }
     // El compact al retornar una vista, devuelve una variable a la vista que hayas seleccionado
     // se utilizando cuando en la vista tienes que jugar con la variable, sino no
-    return view('results', compact('answers', 'machine_choice'));
+    echo "hola3";
+    return view('results', compact('answer', 'machine_choice'));
     }
 
 
