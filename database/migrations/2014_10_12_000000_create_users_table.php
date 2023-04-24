@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Integer debe ponerse entero, y añadir nullable para que no de error
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');

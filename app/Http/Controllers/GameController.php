@@ -23,6 +23,7 @@ class GameController extends Controller
 
     public function result($machine_choice, $user_choice, $id_user) {
         $answer = '';
+        
     // Gracias al campo id obtengo todos los datos del usuario
         $user = User::findOrFail($id_user);
             
@@ -91,11 +92,12 @@ class GameController extends Controller
         }
    
         $user->save();
-
+       
+        
        }
     // El compact al retornar una vista, devuelve una variable a la vista que hayas seleccionado
     // se utilizando cuando en la vista tienes que jugar con la variable, sino no
-    return view('result', compact('answers'));
+    return view('results', compact('answers', 'machine_choice'));
     }
 
 
@@ -108,6 +110,10 @@ class GameController extends Controller
         // $this es para llamar a funciones 
         $this->result($machine_choice, $user_choice, $id_user);
 
+    
+    }
+    public function choice() {
+        return view('game');
     }
 
   
