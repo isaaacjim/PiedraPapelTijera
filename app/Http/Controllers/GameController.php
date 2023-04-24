@@ -26,8 +26,9 @@ class GameController extends Controller
         
     // Gracias al campo id obtengo todos los datos del usuario
         $user = User::findOrFail($id_user);
-            
+        echo "hola3";
     // Aqui decimos que si el usuario es rock los diferentes escenarios:
+    
         if($user_choice == 'Rock') {
              switch ($machine_choice) {
                 case 'Rock':
@@ -102,12 +103,14 @@ class GameController extends Controller
 
 
     public function game(Request $request) {
+        
         $options = ['Rock', 'Paper', 'Scissors'];
         $machine_choice = array_rand($options);
         // Por la URL
         $user_choice = $request->choice;
         $id_user = $request->id;
         // $this es para llamar a funciones 
+        
         $this->result($machine_choice, $user_choice, $id_user);
 
     

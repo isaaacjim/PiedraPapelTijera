@@ -22,7 +22,7 @@ Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/login', [App\Http\Controllers\GameController::class, 'joaquindinosalgo'])->name('login');
-Route::get('/game', [App\Http\Controllers\GameController::class, 'game'])->name('game');
+Route::post('/game', [App\Http\Controllers\GameController::class, 'game'])->name('game');
 Route::post('/results', [App\Http\Controllers\GameController::class, 'results'])->name('results');
 Route::get('/choice', [App\Http\Controllers\GameController::class, 'choice'])->name('choice');
 
